@@ -15,6 +15,8 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   def new
     @picture = Picture.new
+    @picture.title = params[:title]
+    @picture.description = params[:description]
     @picture.image = params[:file]
     @picture.save!
   end
@@ -71,6 +73,6 @@ class PicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
-      params.require(:picture).permit(:image)
+      params.require(:picture).permit(:title, :description, :image)
     end
 end
