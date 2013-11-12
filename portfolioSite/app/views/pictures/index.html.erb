@@ -1,10 +1,15 @@
-<h1>Listing pictures</h1>
+<h1>Pictures</h1>
 
 <table>
   <thead>
     <tr>
       <th></th>
     </tr>
+    <script>
+        $(function(){
+            $('#carousel-image').carousel();
+        });
+    </script>
   </thead>
 
   <tbody>
@@ -17,11 +22,11 @@
       </tr>
     <% end %>-->
 
-  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <div id="carousel-image" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
           <% @pictures.each do |picture| %>
-            <li data-target="#carousel-example-generic" data-slide-to="picture.ID" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="<%= picture.id.to_s %>" class="active"></li>
           <% end %>
       </ol>
 
@@ -29,21 +34,20 @@
       <div class="carousel-inner">
           <div class="item active">
               <% @pictures.each do |picture| %>
-              <img src=<%= image_tag picture.image_url.to_s %> alt=picture.description>
+              <img src=<%= picture.image_url.to_s %> />
               <div class="carousel-caption">
                 <h3><%= picture.title %></h3>
                 <p><%= picture.description %></p>
               </div>
               <% end %>
           </div>
-          ...
       </div>
 
       <!-- Controls -->
-      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+      <a class="left carousel-control" href="#carousel-image" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
-      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+      <a class="right carousel-control" href="#carousel-image" data-slide="next">
           <span class="glyphicon glyphicon-chevron-right"></span>
       </a>
   </div>
